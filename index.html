@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliment Generator</title>
+  <style>
+    :root {
+      --bg-top: #fef6e4;
+      --bg-bottom: #cde7ff;
+      --card: rgba(255, 255, 255, 0.82);
+      --text: #172033;
+      --button: #ff7a59;
+      --button-hover: #e76849;
+      --shadow: rgba(23, 32, 51, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: Georgia, serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 30%),
+        linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+    }
+
+    .card {
+      width: min(100%, 620px);
+      padding: 32px;
+      border-radius: 24px;
+      text-align: center;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px var(--shadow);
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .compliment {
+      min-height: 96px;
+      margin: 28px 0;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      font-size: clamp(1.25rem, 3vw, 1.8rem);
+      font-weight: bold;
+      display: grid;
+      place-items: center;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      background: var(--button);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    button:hover {
+      background: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Compliment Generator</h1>
+    <p>Click the button and get a random compliment.</p>
+
+    <div class="compliment" id="compliment">
+      You bring a nice energy into the room.
+    </div>
+
+    <button id="compliment-button">Give me another one</button>
+  </main>
+
+  <script>
+    const compliments = [
+      "You have excellent instincts.",
+      "You make new things feel less scary.",
+      "You ask really thoughtful questions.",
+      "You have a calm, capable vibe.",
+      "You make learning look good.",
+      "You have surprisingly great taste.",
+      "You make hard things feel possible.",
+      "You are doing better than you think.",
+      "You have the kind of curiosity that leads somewhere interesting.",
+      "You make this whole beginner thing look strong."
+    ];
+
+    const complimentBox = document.getElementById("compliment");
+    const complimentButton = document.getElementById("compliment-button");
+
+    function showRandomCompliment() {
+      const randomIndex = Math.floor(Math.random() * compliments.length);
+      complimentBox.textContent = compliments[randomIndex];
+    }
+
+    complimentButton.addEventListener("click", showRandomCompliment);
+  </script>
+</body>
+</html>
